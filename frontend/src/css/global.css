@@ -1,0 +1,118 @@
+.centered-text {
+    display: flex;
+    justify-content: center; /* centre horizontalement */
+    align-items: center;     /* centre verticalement */
+    height: 100vh;           /* prend toute la hauteur de la fenêtre */
+    flex-direction: column;  /* empile les éléments (h1, p, etc.) */
+    text-align: center;      /* centre le texte */
+  }
+  
+  .top-text {
+    margin-top: 100px; /* adapte selon la hauteur réelle de ta navbar */
+    padding: 1rem 2rem;
+  }
+
+  .follow-text {
+    margin-top: 10px; /* adapte selon la hauteur réelle de ta navbar */
+    padding: 1rem 2rem;
+  }
+
+  .center-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px - 5rem); /* 80px = hauteur de ta NavBar */
+    margin-top: 0px;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center; /* centre horizontalement */
+    gap: 1rem; /* espace entre les boutons */
+    flex-wrap: wrap; /* permet de passer à la ligne si l'espace manque */
+  }
+
+  /*FILE MANAGER CSS */
+  .folder {
+    margin-left: 25px;
+  }
+  
+  .folder-title {
+    cursor: pointer;
+  }
+  
+  .file-name {
+    margin: 0;
+    padding: 0;
+    margin-left: 25px;
+  }
+
+  /* ---- Container général en dessous de la navbar ---- */
+.boundaries-container {
+  display: flex;
+  height: calc(100vh - 100px); /* Laisser de la place pour la navbar */
+  margin-top: 100px;
+}
+
+/* ---- Sidebar du FileManager ---- */
+.boundaries-sidebar {
+  width: 170px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---- Contenu principal : éditeur + bouton ---- */
+.boundaries-editor-area {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* ---- Titre au-dessus de l'éditeur ---- */
+.boundaries-file-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.advanced-sidebar {
+  width: 300px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+  
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.btn {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: var(--btn-color, #e20913c5);
+  transition: filter 0.2s ease-in-out;
+}
+
+/* Hover: foncé */
+.btn:hover {
+  filter: brightness(90%);
+}
+
+/* Active (click): encore plus foncé */
+.btn:active {
+  filter: brightness(80%);
+}

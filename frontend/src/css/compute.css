@@ -1,0 +1,36 @@
+/* Simulation.css */
+
+.centered-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px; /* 100px pour la navBar + 20px de marge */
+  }
+  
+  .centered-text h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+  }
+  
+  .centered-text button {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .centered-text button:hover {
+    background-color: #0056b3;
+  }
+  
+  .centered-text p {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 30px;
+    color: #444;
+  }
+  

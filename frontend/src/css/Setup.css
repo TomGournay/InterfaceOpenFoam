@@ -1,0 +1,29 @@
+.page-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .setup-form {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1.2rem 1.5rem;
+    align-items: center;
+  }
+  
+  label {
+    font-weight: 600;
+    text-align: right;
+  }
+  
+  .input-wrapper {
+    width: 250px;
+  }
+  
+  .button-container {
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }

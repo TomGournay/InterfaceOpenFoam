@@ -1,0 +1,132 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       surfaceScalarField;
+    location    "5";
+    object      phi;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 3 -1 0 0 0 0];
+
+oriented        oriented;
+
+internalField   nonuniform List<scalar> 
+49
+(
+-2.99582
+2.99582
+-3.03536
+0.0395384
+2.95474
+0.041085
+2.95474
+2.93832
+0.0164135
+-5.68718
+5.72672
+-1.86124
+3.67306
+2.05365
+3.71415
+0.33109
+4.36474
+-4.69583
+4.04524
+4.06165
+3.3164
+1.04834
+-3.39277
+4.83519
+-3.79756
+0.404795
+-2.62645
+-3.47925
+6.1057
+1.2574
+2.54016
+1.87317
+2.96201
+4.13365
+0.569992
+-2.93724
+4.99089
+-3.16846
+3.57325
+-0.295062
+3.86831
+-0.579395
+4.09052
+-3.04218
+2.79295
+-4.35814
+-1.02846
+-3.78815
+-0.826136
+)
+;
+
+boundaryField
+{
+    wall-4
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    velocity-inlet-5
+    {
+        type            calculated;
+        value           nonuniform List<scalar> 0();
+    }
+    velocity-inlet-6
+    {
+        type            calculated;
+        value           nonuniform List<scalar> 0();
+    }
+    pressure-outlet-7
+    {
+        type            calculated;
+        value           nonuniform List<scalar> 0();
+    }
+    wall-8
+    {
+        type            calculated;
+        value           nonuniform List<scalar> 0();
+    }
+    frontAndBackPlanes
+    {
+        type            empty;
+    }
+    procBoundary11to0
+    {
+        type            processor;
+        value           nonuniform List<scalar> 3(-4.48769 -4.73665 -4.1371);
+    }
+    procBoundary11to3
+    {
+        type            processor;
+        value           nonuniform List<scalar> 2(-3.03536 -3.82594);
+    }
+    procBoundary11to9
+    {
+        type            processor;
+        value           nonuniform List<scalar> 6(3.56366 -2.26048 -1.44242 1.59693 1.56519 3.82141);
+    }
+    procBoundary11to10
+    {
+        type            processor;
+        value           nonuniform List<scalar> 4(2.93832 3.06206 3.89579 3.48225);
+    }
+}
+
+
+// ************************************************************************* //
