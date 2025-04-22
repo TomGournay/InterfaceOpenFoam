@@ -5,8 +5,6 @@ function OpenFOAMInterface() {
   return (
     <div className="centered-text">
       <h1>interface OpenFOAM</h1>
-      <img src={mlg} />
-      <img src={snoop} />
     </div>
   );
 }
