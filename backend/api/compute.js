@@ -4,11 +4,11 @@ const router = express.Router();
 const { exec } = require('child_process');
 
 router.post('/run', (req,res) => {
-    const { caseName, solverName} = req.body;
+    const { caseName, solverName, numberOfSubdomains} = req.body;
     const simulationPath = path.resolve(__dirname, '../data/simulations', caseName);
     const bashrcPath = `../../etc/bashrc`;
     
-    const fullCommand = `cd "${simulationPath}" && source "${bashrcPath}" && decomposePar && mpirun -np 24 ${solverName} -parallel`;
+    const fullCommand = `cd "${simulationPath}" && source "${bashrcPath}" && decomposePar && mpirun -np ${numberOfSubdomains} ${solverName} -parallel`;
 
     const launchTerminal = `gnome-terminal -- bash -c '${fullCommand}; exec bash'`;
   

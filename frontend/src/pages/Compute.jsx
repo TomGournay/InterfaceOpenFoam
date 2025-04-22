@@ -8,6 +8,7 @@ function Compute() {
   const [caseName, setCaseName] = useState("");
   const [solverName, setSolverName] = useState("");
   const [status, setStatus] = useState(null);
+  const [numberOfSubdomains, setNumberOfSubdomains] = useState("");
   //RAPPELLER LE NOM DU CAS
   useEffect(() => {
     const storedCaseName = localStorage.getItem("caseName");
@@ -16,6 +17,18 @@ function Compute() {
     } else {
       alert(
         "Creez d'abord votre simulation dans solvers ou renseignez le nom de la simulation que vous avez fait dans le chargeur de simulation"
+      );
+    }
+  });
+
+  //RAPPELLER LE NOMBRE DE PROCESSEUR
+  useEffect(() => {
+    const storedNumberOfSubdomains = localStorage.getItem("numberOfSubdomains");
+    if (storedNumberOfSubdomains) {
+      setNumberOfSubdomains(storedNumberOfSubdomains);
+    } else {
+      alert(
+        "Renseingnez le nombre de coeurs que vous voules utiliser"
       );
     }
   });
@@ -43,6 +56,7 @@ function Compute() {
         body: JSON.stringify({
           caseName: caseName,
           solverName: solverName,
+          numberOfSubdomains: numberOfSubdomains,
         }),
       });
 

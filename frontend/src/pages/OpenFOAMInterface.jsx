@@ -4,7 +4,8 @@ import snoop from "../images/snoop.gif";
 function OpenFOAMInterface() {
   return (
     <div className="centered-text">
-      <h1>interface OpenFOAM</h1>
+      <h1>Interface OpenFOAM</h1>
+    <h5>Crée par Tom Gournay</h5>
     </div>
   );
 }

@@ -58,4 +58,35 @@ router.post('/updateLine', (req, res) => {
   });
 });
 
+router.get('/getLineValue', (req, res) => {
+  const { caseName, filePath, matchPattern } = req.query;
+
+  if (!caseName || !filePath || !matchPattern) {
+    return res.status(400).json({ error: 'Paramètres manquants' });
+  }
+
+  const fullPath = path.join(__dirname, '..', 'data', 'simulations', caseName, filePath);
+
+  if (!fs.existsSync(fullPath)) {
+    return res.status(404).json({ error: 'Fichier introuvable' });
+  }
+
+  fs.readFile(fullPath, 'utf8', (err, content) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erreur lecture fichier', details: err.message });
+    }
+
+    const regex = new RegExp(`^\\s*${matchPattern}\\s+([^;]+)`);
+    const match = content.split('\n').find(line => regex.test(line));
+
+    if (!match) {
+      return res.status(404).json({ error: `Ligne '${matchPattern}' introuvable` });
+    }
+
+    const value = regex.exec(match)[1].trim();
+    res.json({ value });
+  });
+});
+
+
 module.exports = router;

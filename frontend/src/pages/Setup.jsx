@@ -16,12 +16,39 @@ function Setup() {
     if (storedCaseName) {
       setCaseName(storedCaseName);
     } else {
-      alert(
-        "Creez d'abord votre simulation dans sovlers ou renseignez le nom de la simulation"
-      );
+      alert("Créez d'abord votre simulation dans Solvers ou renseignez le nom de la simulation");
     }
-  }, []);
+  }, []);  
 
+  const fetchValue = async (filePath, matchPattern, setter) => {
+    try {
+      console.log(`🛰️ Fetching value for ${matchPattern} in ${filePath}`);
+      const res = await fetch(`http://localhost:3000/api/setup/getLineValue?caseName=${caseName}&filePath=${filePath}&matchPattern=${matchPattern}`);
+      const data = await res.json();
+      console.log(`📥 Valeur reçue pour ${matchPattern} :`, data);
+  
+      if (data.value !== undefined) {
+        setter(data.value);
+      } else {
+        console.warn(`⚠️ Aucune valeur trouvée pour ${matchPattern}`);
+      }
+    } catch (err) {
+      console.error(`❌ Erreur fetch ${matchPattern} :`, err);
+    }
+  };
+  
+
+  useEffect(() => {
+    if (!caseName) return;
+  
+    fetchValue("system/controlDict", "startTime", setStartTime);
+    fetchValue("system/controlDict", "endTime", setEndTime);
+    fetchValue("system/controlDict", "deltaT", setDeltaT);
+    fetchValue("system/controlDict", "writeInterval", setWriteInterval);
+    fetchValue("system/decomposeParDict", "numberOfSubdomains", setNumberOfSubdomains);
+  }, [caseName]); // ⬅️ s'exécute uniquement quand caseName est bien défini
+
+  
   const handleStartTime = async () => {
     console.log("🔧 Envoi startTime...");
     const res = await fetch("http://localhost:3000/api/setup/updateLine", {
@@ -110,6 +137,9 @@ function Setup() {
     const data = await res.json();
     if (!data.success) throw new Error("Erreur mise à jour numberofsubdomain");
     console.log("✅ numberofsubdomain mis à jour");
+
+    localStorage.setItem("numberOfSubdomains", numberOfSubdomains);
+    window.dispatchEvent(new Event("numberofsubdomainsChanged"));
   };
 
   return (
